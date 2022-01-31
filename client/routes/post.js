@@ -31,5 +31,15 @@ newpost.save(function(err){
 })
 })
 )
-
+router.get('/getpost',(req, res)=>{
+    postmodel.find({},function(docs,err){
+        if(!err)
+        {
+            res.send(docs)
+        }
+        else{
+            res.send(err)
+        }
+    })
+})
 module.exports=router

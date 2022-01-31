@@ -1,6 +1,7 @@
 import React, { useState } from'react'
 import uniqid from'uniqid'
 import axios from'axios'
+import Swal from 'sweetalert2'
 function Addpost()
 {
     const[title,settitle]=useState('')
@@ -17,6 +18,7 @@ function Addpost()
 
         axios.post('/api/post/addnewpost',post).then(res=>{
             alert(res.data)
+            Swal.fire('congrats','your post added','success')
         }).then(err=>{
             console.log(err)
         })
@@ -27,8 +29,10 @@ function Addpost()
 
 
             <div className='col-md-6'>
+                <h1 className='m-3'>add new post</h1>
 
             <div>
+                <a href="/" className='btn btn-primary'>see post</a>
             <input type="text" placeholder='title' className='from-control'
             value={title} onChange={(e=>{settitle(e.target.value)})}
             />
