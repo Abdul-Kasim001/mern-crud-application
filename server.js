@@ -1,0 +1,15 @@
+const { application } = require('express')
+const express = require('express')
+const app =express()
+const dbfile =require('./conn')
+const postroute = require('./routes/post')
+const bodyParser=require('body-parser')
+app.use(bodyParser.json)
+app.use(bodyParser.urlencoded({extended:'true'}))
+app.use('/api/post',postroute)
+app.get('/',(req,res)=>{
+    res.end('hello with nodejs')
+})
+app.listen(5000,function(){
+    console.log('node js server stared sucessfully')
+})
